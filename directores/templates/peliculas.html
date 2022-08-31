@@ -1,0 +1,24 @@
+{% extends "basic_generic.html" %} 
+
+{% block title %}<title>Películas</title>{% endblock %} 
+
+{% block content %}
+
+{% for pelicula in lista_peliculas %}
+<div class="card m-2" style="width: 30rem;">
+  <img src={{ pelicula.urlImagen }} class="card-img-top" style="height: 300px; object-fit: cover; object-position: 50% 10%;"
+    alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{ pelicula.titulo }}</h5>
+    <p class="card-text">
+      {{ pelicula.sinopsis }}
+    </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>Año de estreno:</strong> {{ pelicula.año_de_estreno }}</li>
+    <li class="list-group-item"><strong>Dirigido por:</strong> {{ pelicula.dirigido_por }}</li>
+  </ul>
+</div>
+{% endfor %} 
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "basic_generic.html" %}
+
+{% block title %}<title>Directores</title>{% endblock %}
+
+{% block content %}
+
+{% for director in lista_directores %}
+<div class="card border-dark m-2 text-center" style="width: 30rem">
+    <img src="{{ director.urlImagen }}" class="card-img-top" style="height: 300px; object-fit: cover; object-position: 50% 10%;" alt="..." />
+    <div class="card-body">
+        <h5 class="card-title">{{ director.nombre }} {{ director.apellido }}</h5>
+        <br>
+        <h6 class="card-subtitle text-muted"><strong>Fecha de nacimiento:</strong> {{ director.fecha_de_nacimiento }}</h6>
+        <br>
+        <h6 class="card-subtitle text-muted"><strong>Nacionalidad:</strong> {{ director.nacionalidad }}</h6>
+        <br>
+        <br>
+        <div class="card-header"><strong>Peliculas dirigidas:</strong></div>
+        <ul class="list-group list-group-flush">
+            {% for pelicula in director.peliculas_dirigidas.all %}
+                <li class="list-group-item">{{ pelicula }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
